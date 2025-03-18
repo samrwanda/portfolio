@@ -594,13 +594,8 @@
         function closeNavbar() {
             const navbar = document.getElementById('navbar-default');
             const button = document.querySelector('[data-collapse-toggle="navbar-default"]');
-            if (navbar.classList.contains('hidden')) {
-                navbar.classList.remove('hidden');
-                button.setAttribute('aria-expanded', 'true');
-            } else {
-                navbar.classList.add('hidden');
-                button.setAttribute('aria-expanded', 'false');
-            }
+            navbar.classList.add('hidden');
+            button.setAttribute('aria-expanded', 'false');
         }
     </script>
 </body>
