@@ -520,27 +520,27 @@
                                 });
                             }, observerOptions);
 
-                            // Add scroll animation to all sections
+                            // Add scroll animation to all sections with faster timing
                             document.querySelectorAll('section, .mt-24, .bg-secondary\\/10, .bg-primary').forEach(section => {
                                 section.style.opacity = '0';
-                                section.style.transform = 'translateY(20px)';
-                                section.style.transition = 'all 0.8s ease-out';
+                                section.style.transform = 'translateY(10px)'; // Reduced distance
+                                section.style.transition = 'all 0.4s ease-out'; // Faster transition
                                 observer.observe(section);
                             });
 
-                            // Add staggered animation to project cards
+                            // Add staggered animation to project cards with shorter delays
                             document.querySelectorAll('#my-projects .grid > div').forEach((card, index) => {
                                 card.style.opacity = '0';
-                                card.style.transform = 'translateY(20px)';
-                                card.style.transition = `all 0.5s ease-out ${index * 0.2}s`;
+                                card.style.transform = 'translateY(10px)'; // Reduced distance
+                                card.style.transition = `all 0.3s ease-out ${index * 0.1}s`; // Faster transition and shorter delay
                                 observer.observe(card);
                             });
 
-                            // Add staggered animation to why hire me cards
+                            // Add staggered animation to why hire me cards with shorter delays
                             document.querySelectorAll('#hire-me .flex').forEach((card, index) => {
                                 card.style.opacity = '0';
-                                card.style.transform = 'translateY(20px)';
-                                card.style.transition = `all 0.8s ease-out ${index * 0.3}s`;
+                                card.style.transform = 'translateY(10px)'; // Reduced distance
+                                card.style.transition = `all 0.4s ease-out ${index * 0.15}s`; // Faster transition and shorter delay
                                 observer.observe(card);
                             });
 
