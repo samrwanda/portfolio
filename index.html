@@ -510,39 +510,80 @@
                                 threshold: 0.1
                             };
 
+                            // Function to check if device is mobile
+                            function isMobile() {
+                                return window.innerWidth < 768;
+                            }
+
                             const observer = new IntersectionObserver((entries) => {
                                 entries.forEach(entry => {
                                     if (entry.isIntersecting) {
-                                        entry.target.style.opacity = '1';
-                                        entry.target.style.transform = 'translateY(0)';
+                                        // On mobile, show content immediately without animation
+                                        if (isMobile()) {
+                                            entry.target.style.opacity = '1';
+                                            entry.target.style.transform = 'none';
+                                        } else {
+                                            // On desktop, apply smooth animation
+                                            entry.target.style.opacity = '1';
+                                            entry.target.style.transform = 'translateY(0)';
+                                        }
                                         observer.unobserve(entry.target);
                                     }
                                 });
                             }, observerOptions);
 
-                            // Add scroll animation to all sections with faster timing
-                            document.querySelectorAll('section, .mt-24, .bg-secondary\\/10, .bg-primary').forEach(section => {
-                                section.style.opacity = '0';
-                                section.style.transform = 'translateY(10px)'; // Reduced distance
-                                section.style.transition = 'all 0.4s ease-out'; // Faster transition
-                                observer.observe(section);
-                            });
+                            // Initialize content visibility based on device
+                            function initializeContent() {
+                                const sections = document.querySelectorAll('section, .mt-24, .bg-secondary\\/10, .bg-primary');
+                                const projectCards = document.querySelectorAll('#my-projects .grid > div');
+                                const hireMeCards = document.querySelectorAll('#hire-me .flex');
 
-                            // Add staggered animation to project cards with shorter delays
-                            document.querySelectorAll('#my-projects .grid > div').forEach((card, index) => {
-                                card.style.opacity = '0';
-                                card.style.transform = 'translateY(10px)'; // Reduced distance
-                                card.style.transition = `all 0.3s ease-out ${index * 0.1}s`; // Faster transition and shorter delay
-                                observer.observe(card);
-                            });
+                                if (isMobile()) {
+                                    // On mobile, show all content immediately
+                                    sections.forEach(section => {
+                                        section.style.opacity = '1';
+                                        section.style.transform = 'none';
+                                    });
 
-                            // Add staggered animation to why hire me cards with shorter delays
-                            document.querySelectorAll('#hire-me .flex').forEach((card, index) => {
-                                card.style.opacity = '0';
-                                card.style.transform = 'translateY(10px)'; // Reduced distance
-                                card.style.transition = `all 0.4s ease-out ${index * 0.15}s`; // Faster transition and shorter delay
-                                observer.observe(card);
-                            });
+                                    projectCards.forEach(card => {
+                                        card.style.opacity = '1';
+                                        card.style.transform = 'none';
+                                    });
+
+                                    hireMeCards.forEach(card => {
+                                        card.style.opacity = '1';
+                                        card.style.transform = 'none';
+                                    });
+                                } else {
+                                    // On desktop, set up animations
+                                    sections.forEach(section => {
+                                        section.style.opacity = '0';
+                                        section.style.transform = 'translateY(10px)';
+                                        section.style.transition = 'all 0.4s ease-out';
+                                        observer.observe(section);
+                                    });
+
+                                    projectCards.forEach((card, index) => {
+                                        card.style.opacity = '0';
+                                        card.style.transform = 'translateY(10px)';
+                                        card.style.transition = `all 0.3s ease-out ${index * 0.1}s`;
+                                        observer.observe(card);
+                                    });
+
+                                    hireMeCards.forEach((card, index) => {
+                                        card.style.opacity = '0';
+                                        card.style.transform = 'translateY(10px)';
+                                        card.style.transition = `all 0.4s ease-out ${index * 0.15}s`;
+                                        observer.observe(card);
+                                    });
+                                }
+                            }
+
+                            // Initialize content on page load
+                            initializeContent();
+
+                            // Update on window resize
+                            window.addEventListener('resize', initializeContent);
 
                             // Add this function to close the navbar
                             function closeNavbar() {
