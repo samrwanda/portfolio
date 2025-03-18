@@ -59,7 +59,7 @@
         }
     </style>
 </head>
-<body class="bg-primary text-secondary min-h-screen flex flex-col">
+<body class="bg-primary text-secondary min-h-screen flex flex-col overflow-x-hidden">
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-primary/90 backdrop-blur-md shadow-sm">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -83,9 +83,9 @@
     </nav>
 
     <!-- Main content wrapper -->
-    <main class="flex-grow flex flex-col">
+    <main class="flex-grow flex flex-col pt-16">
         <!-- Hero Section -->
-        <div class="min-h-screen flex items-center justify-center hero-gradient">
+        <div class="min-h-[calc(100vh-4rem)] md:min-h-screen flex items-center justify-center hero-gradient">
             <div class="max-w-screen-xl mx-auto px-4 py-32 flex flex-col md:flex-row items-center gap-12">
                 <div class="w-full md:w-1/2 space-y-8">
                     <h1 class="text-5xl md:text-6xl font-bold text-primary leading-tight">
@@ -110,7 +110,7 @@
         </div>
 
         <!-- Skills Section -->
-        <div id="my-learning" class="py-24 bg-primary">
+        <div id="my-learning" class="py-12 md:py-24 bg-primary">
             <div class="max-w-screen-xl mx-auto px-4">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold mb-4 gradient-text">My Skills</h2>
@@ -227,7 +227,7 @@
                 </div>
 
                 <!-- Work Arrangement Section -->
-                <div class="mt-24 mb-24 opacity-0 transform translate-y-10 transition-all duration-1000" data-scroll>
+                <div class="mt-12 md:mt-24 mb-12 md:mb-24 opacity-0 transform translate-y-10 transition-all duration-1000" data-scroll>
                     <div class="text-center mb-16">
                         <h2 class="text-4xl font-bold mb-4 gradient-text">Work Arrangement</h2>
                         <p class="text-secondary max-w-2xl mx-auto">Flexible work options to meet your needs</p>
@@ -252,7 +252,7 @@
                     </div>
                 </div>
 
-                <div class="bg-secondary/10 flex flex-col justify-center items-center px-4 sm:px-8 lg:px-16 py-12">
+                <div class="bg-secondary/10 flex flex-col justify-center items-center px-4 sm:px-8 lg:px-16 py-8 md:py-12">
                     
                     <h1 id="my-projects" class="font-bold text-accent text-4xl mb-6 sm:mb-12 py-12 relative after:content-[''] after:absolute after:bottom-10 after:left-0 after:w-full after:h-1 after:bg-primary">My Projects</h1>
                     
@@ -321,7 +321,7 @@
                     
                             </div>
 
-                            <div id="hire-me" class="bg-primary py-24">
+                            <div id="hire-me" class="bg-primary py-12 md:py-24">
                                 <div class="max-w-screen-xl mx-auto px-4">
                                     <div class="text-center mb-16">
                                         <h2 class="text-4xl font-bold mb-4 gradient-text">Why Hire Me</h2>
@@ -398,7 +398,7 @@
 
                             <!--education-->
                             <div id="about-me" class="bg-secondary/10 mb-0">
-                                <div class="max-w-screen-xl mx-auto px-4 py-24 p-8">
+                                <div class="max-w-screen-xl mx-auto px-4 py-12 md:py-24 p-4 md:p-8">
                                     <h1 class="font-bold text-accent text-4xl text-center mb-12 relative after:content-[''] after:absolute after:bottom-[-0.5rem] after:left-1/2 after:transform after:-translate-x-1/2 after:w-24 after:h-1 after:bg-primary">My Education</h1>
 
                                     <div class="bg-primary w-full sm:max-w-[600px] mx-auto p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border-l-4 border-accent mb-0">
